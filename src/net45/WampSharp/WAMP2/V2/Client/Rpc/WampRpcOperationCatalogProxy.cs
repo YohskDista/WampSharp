@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WampSharp.Core.Serialization;
-using SystemEx;
+using System;
 using WampSharp.V2.Core.Contracts;
 using WampSharp.V2.Rpc;
 

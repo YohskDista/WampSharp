@@ -3,7 +3,7 @@ using System.Buffers;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using SystemEx;
+using System;
 using WampSharp.Core.Listener;
 using WampSharp.Core.Message;
 using WampSharp.V2.Binding;

@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using SystemEx;
+using System;
 using WampSharp.V2.Client;
 
 namespace WampSharp.V2.MetaApi

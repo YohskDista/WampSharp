@@ -6,7 +6,7 @@ using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
 
 // ReSharper disable once CheckNamespace
-namespace SystemEx
+namespace System
 {
     internal class CompositeAsyncDisposable : IAsyncDisposable
     {

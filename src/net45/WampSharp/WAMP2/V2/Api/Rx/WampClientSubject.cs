@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using SystemEx;
+using System;
 using WampSharp.Core.Listener;
 using WampSharp.V2.Client;
 using WampSharp.V2.Core.Contracts;
