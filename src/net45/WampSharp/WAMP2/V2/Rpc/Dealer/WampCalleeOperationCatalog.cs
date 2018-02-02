@@ -6,6 +6,8 @@ using WampSharp.V2.Core.Contracts;
 
 namespace WampSharp.V2.Rpc
 {
+    extern alias rxCore;
+
     internal class WampCalleeOperationCatalog<TMessage> : IWampCalleeOperationCatalog
     {
         private readonly IWampRpcOperationCatalog mCatalog;
@@ -37,7 +39,7 @@ namespace WampSharp.V2.Rpc
 
                 operation.RegistrationId = registrationId;
 
-                CompositeDisposable disposable = new CompositeDisposable(token, operation);
+                rxCore::System.Reactive.Disposables.CompositeDisposable disposable = new rxCore::System.Reactive.Disposables.CompositeDisposable(token, operation);
 
                 bool alreadyRegistered = 
                     !mOperationToDisposable.TryAdd(operation, disposable);

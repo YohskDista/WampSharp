@@ -1,3 +1,5 @@
+extern alias rxCore;
+
 using System;
 using System.Reactive;
 using System.Reactive.Disposables;
@@ -5,6 +7,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using WampSharp.V2.Client;
 using WampSharp.V2.Realm;
+using Unit = rxCore::System.Reactive.Unit;
 
 namespace WampSharp.V2
 {
@@ -14,7 +17,7 @@ namespace WampSharp.V2
     public class WampChannelReconnector : IDisposable
     {
         private IObservable<Unit> mMerged;
-        private IDisposable mDisposable = Disposable.Empty;
+        private IDisposable mDisposable = rxCore::System.Reactive.Disposables.Disposable.Empty;
         private bool mStarted = false;
         private readonly object mLock = new object();
         private IDisposable mConnectionBrokenDisposable;

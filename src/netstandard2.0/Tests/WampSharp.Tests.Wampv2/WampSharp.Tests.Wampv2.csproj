@@ -23,4 +23,9 @@
   <ItemGroup>
     <Compile Include="..\..\..\net45\Tests\WampSharp.Tests.Wampv2\**\*.cs" Exclude="..\..\..\net45\Tests\WampSharp.Tests.Wampv2\**\bin\**;..\..\..\net45\Tests\WampSharp.Tests.Wampv2\**\obj\**;" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Reactive.Async.Interfaces">
+      <HintPath>..\..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

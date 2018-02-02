@@ -5,6 +5,8 @@ using WampSharp.Core.Listener;
 
 namespace WampSharp.V2
 {
+    extern alias rxCore;
+
     internal class CompositeListener<TMessage> : IWampConnectionListener<TMessage>
     {
         private readonly IEnumerable<IWampConnectionListener<TMessage>> mListeners;
@@ -16,7 +18,7 @@ namespace WampSharp.V2
 
         public IDisposable Subscribe(IObserver<IWampConnection<TMessage>> observer)
         {
-            CompositeDisposable disposable = new CompositeDisposable();
+            rxCore::System.Reactive.Disposables.CompositeDisposable disposable = new rxCore::System.Reactive.Disposables.CompositeDisposable();
 
             foreach (IWampConnectionListener<TMessage> listener in mListeners)
             {

@@ -9,6 +9,8 @@ using WampSharp.V2.Core.Contracts;
 
 namespace WampSharp.V2.PubSub
 {
+    extern alias rxCore;
+
     public class WampTopic : IWampTopic
     {
         #region Data Members
@@ -90,7 +92,7 @@ namespace WampSharp.V2.PubSub
 
             mSubscribers.Add(subscriber);
 
-            IDisposable result = Disposable.Create(() =>
+            IDisposable result = rxCore::System.Reactive.Disposables.Disposable.Create(() =>
             {
                 mSubscribers.Remove(subscriber);
                 OnSubscriberLeave(subscriber);

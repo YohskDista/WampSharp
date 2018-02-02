@@ -29,10 +29,53 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <PackageReference Include="Microsoft.CSharp" Version="4.3.0" />
     <PackageReference Include="Castle.Core" Version="4.2.1" />
-    <PackageReference Include="System.Reactive" Version="3.0.0" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="4.7.0" />
     <PackageReference Include="System.Collections.Immutable" Version="1.3.1" />
     <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="..\..\net45\WampSharp\Core\Utilities\AsyncDisposable\IAsyncDisposable.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="System.Reactive.Async">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Async.Concurrency">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Concurrency.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Async.Core">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Async.Disposables">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Disposables.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Async.Interfaces">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Async.Linq">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Async.Subjects">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Subjects.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Bcl">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Bcl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\net45\packages\System.Reactive.Core.3.0.0\lib\netstandard1.3\System.Reactive.Core.dll</HintPath>
+      <Aliases>rxCore</Aliases>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\net45\packages\System.Reactive.Interfaces.3.0.0\lib\netstandard1.0\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\net45\packages\System.Reactive.Linq.3.0.0\lib\netstandard1.3\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Shared">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Shared.dll</HintPath>
+    </Reference>
   </ItemGroup>
   
 </Project>

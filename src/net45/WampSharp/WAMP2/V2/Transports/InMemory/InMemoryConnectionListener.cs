@@ -10,6 +10,8 @@ using WampSharp.V2.Binding;
 
 namespace WampSharp.V2.Transports
 {
+    extern alias rxCore;
+
     internal class InMemoryConnectionListener<TMessage> : IWampConnectionListener<TMessage>, IDisposable
     {
         private readonly Subject<IWampConnection<TMessage>> mSubject = new Subject<IWampConnection<TMessage>>();
@@ -86,7 +88,7 @@ namespace WampSharp.V2.Transports
                         () => OnCompleted());
 
                 mSubscription =
-                    new CompositeDisposable(connectionClosedSubscription,
+                    new rxCore::System.Reactive.Disposables.CompositeDisposable(connectionClosedSubscription,
                         connectionOpenSubscription,
                         inputSubscription);
             }

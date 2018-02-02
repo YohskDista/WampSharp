@@ -24,5 +24,11 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <ProjectReference Include="..\Default\WampSharp.NewtonsoftMsgpack\WampSharp.NewtonsoftMsgpack.csproj" />
     <ProjectReference Include="..\Extensions\WampSharp.WebSockets\WampSharp.WebSockets.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="System.Reactive.Async.Interfaces">
+      <HintPath>..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Interfaces.dll</HintPath>
+    </Reference>
   </ItemGroup>  
 </Project>

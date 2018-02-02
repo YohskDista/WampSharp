@@ -8,6 +8,8 @@ using WampSharp.V2.Transports;
 
 namespace WampSharp.V2
 {
+    extern alias rxCore;
+
     internal class InMemoryWampHost : WampHostBase
     {
         private readonly InMemoryBinding mInternalBinding;
@@ -34,7 +36,7 @@ namespace WampSharp.V2
         {
             mInternalBinding = new InMemoryBinding();
 
-            mInternalTransport = new InMemoryTransport(Scheduler.Immediate);
+            mInternalTransport = new InMemoryTransport(rxCore::System.Reactive.Concurrency.Scheduler.Immediate);
 
             this.RegisterTransport
                 (mInternalTransport,

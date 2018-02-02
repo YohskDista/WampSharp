@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Reactive.Disposables;
 using System.Threading.Tasks;
-using SystemEx;
+using System;
 using WampSharp.V2.Core.Contracts;
 using WampSharp.V2.Realm;
 using WampSharp.V2.Testament;
 
+
 namespace WampSharp.V2.MetaApi
 {
+    extern alias rxCore;
+
     public static class WampHostedRealmExtensions
     {
         /// <summary>
@@ -19,7 +22,7 @@ namespace WampSharp.V2.MetaApi
         {
             WampRealmDescriptorService service = new WampRealmDescriptorService(hostedRealm);
 
-            CompositeDisposable disposable = 
+            rxCore::System.Reactive.Disposables.CompositeDisposable disposable = 
                 HostDisposableService(hostedRealm, service, CalleeRegistrationInterceptor.Default);
 
             BrokerFeatures brokerFeatures = hostedRealm.Roles.Broker.Features;
@@ -30,7 +33,7 @@ namespace WampSharp.V2.MetaApi
             dealerFeatures.SessionMetaApi = true;
             dealerFeatures.RegistrationMetaApi = true;
 
-            IDisposable featureDisposable = Disposable.Create(() =>
+            IDisposable featureDisposable = rxCore::System.Reactive.Disposables.Disposable.Create(() =>
             {
                 brokerFeatures.SessionMetaApi = null;
                 brokerFeatures.SubscriptionMetaApi = null;
@@ -54,13 +57,13 @@ namespace WampSharp.V2.MetaApi
 
             RegisterOptions registerOptions = new RegisterOptions { DiscloseCaller = true };
 
-            CompositeDisposable disposable = HostDisposableService(hostedRealm, service, new CalleeRegistrationInterceptor(registerOptions));
+            rxCore::System.Reactive.Disposables.CompositeDisposable disposable = HostDisposableService(hostedRealm, service, new CalleeRegistrationInterceptor(registerOptions));
 
             DealerFeatures dealerFeatures = hostedRealm.Roles.Dealer.Features;
 
             dealerFeatures.TestamentMetaApi = true;
 
-            IDisposable featureDisposable = Disposable.Create(() =>
+            IDisposable featureDisposable = rxCore::System.Reactive.Disposables.Disposable.Create(() =>
             {
                 dealerFeatures.TestamentMetaApi = null;
             });
@@ -70,7 +73,7 @@ namespace WampSharp.V2.MetaApi
             return disposable;
         }
 
-        private static CompositeDisposable HostDisposableService(IWampHostedRealm hostedRealm, IDisposable service, ICalleeRegistrationInterceptor registrationInterceptor)
+        private static rxCore::System.Reactive.Disposables.CompositeDisposable HostDisposableService(IWampHostedRealm hostedRealm, IDisposable service, ICalleeRegistrationInterceptor registrationInterceptor)
         {
             Task<IAsyncDisposable> registrationDisposable =
                 hostedRealm.Services.RegisterCallee(service, registrationInterceptor);
@@ -78,10 +81,10 @@ namespace WampSharp.V2.MetaApi
             IAsyncDisposable asyncDisposable = registrationDisposable.Result;
 
             IDisposable unregisterDisposable =
-                Disposable.Create(() => asyncDisposable.DisposeAsync().Wait());
+                rxCore::System.Reactive.Disposables.Disposable.Create(() => asyncDisposable.DisposeAsync().Wait());
 
-            CompositeDisposable result =
-                new CompositeDisposable(unregisterDisposable, service);
+            rxCore::System.Reactive.Disposables.CompositeDisposable result =
+                new rxCore::System.Reactive.Disposables.CompositeDisposable(unregisterDisposable, service);
 
             return result;
         }

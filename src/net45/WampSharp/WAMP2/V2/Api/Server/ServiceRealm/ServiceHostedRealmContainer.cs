@@ -5,6 +5,8 @@ using WampSharp.V2.Realm;
 
 namespace WampSharp.V2
 {
+    extern alias rxCore;
+
     internal class ServiceHostedRealmContainer : IWampHostedRealmContainer
     {
         private readonly IWampHostedRealmContainer mRealmContainer;
@@ -23,7 +25,7 @@ namespace WampSharp.V2
 
         private IWampHostedRealm BuildRealm(string name)
         {
-            IWampChannel channel = mInternalHost.CreateClientConnection(name, Scheduler.Immediate);
+            IWampChannel channel = mInternalHost.CreateClientConnection(name, rxCore::System.Reactive.Concurrency.Scheduler.Immediate);
 
             long sessionId = 0;
 

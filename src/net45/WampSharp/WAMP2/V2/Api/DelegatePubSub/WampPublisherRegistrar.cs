@@ -10,6 +10,8 @@ using WampSharp.V2.Realm;
 
 namespace WampSharp.V2.DelegatePubSub
 {
+    extern alias rxCore;
+
     internal class WampPublisherRegistrar
     {
         private readonly IWampRealmProxy mProxy;
@@ -49,7 +51,7 @@ namespace WampSharp.V2.DelegatePubSub
             }
 
             IDisposable result = 
-                new CompositeDisposable(disposables);
+                new rxCore::System.Reactive.Disposables.CompositeDisposable(disposables);
 
             return result;
         }

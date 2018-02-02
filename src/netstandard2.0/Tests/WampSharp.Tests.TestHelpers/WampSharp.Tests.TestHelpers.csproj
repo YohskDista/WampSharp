@@ -26,4 +26,8 @@
     <ProjectReference Include="..\..\Default\WampSharp.NewtonsoftJson\WampSharp.NewtonsoftJson.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+  </ItemGroup>
+
 </Project>

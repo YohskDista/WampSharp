@@ -11,6 +11,8 @@ using WampSharp.V2.Rpc;
 
 namespace WampSharp.V2.MetaApi
 {
+    extern alias rxCore;
+
     internal class RegistrationDescriptorService : 
         DescriptorServiceBase<RegistrationDetailsExtended>,
         IWampRegistrationDescriptor
@@ -46,7 +48,7 @@ namespace WampSharp.V2.MetaApi
             IDisposable addDisposable = addObservable.Subscribe(x => OnRegistrationAdded(x.Registration, x.Operation));
             IDisposable removeDisposable = removeObservable.Subscribe(x => OnRegistrationRemoved(x.Registration, x.Operation));
 
-            mDisposable = new CompositeDisposable(addDisposable, removeDisposable);
+            mDisposable = new rxCore::System.Reactive.Disposables.CompositeDisposable(addDisposable, removeDisposable);
 
             mOperationCatalog = rpcCatalog;
         }

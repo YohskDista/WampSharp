@@ -1,9 +1,32 @@
-﻿using System;
+﻿extern alias rxCore;
+
+using System;
 using System.Reactive.Disposables;
-using SystemEx;
+using System;
 using WampSharp.Core.Dispatch;
 using WampSharp.Core.Message;
 using WampSharp.Logging;
+using ObservableExtensions = rxCore::System.ObservableExtensions;
+
+
+namespace System
+{
+    internal static class RxHacks
+    {
+        public static IDisposable Subscribe<T>(this IObservable<T> observable, Action<T> onNext)
+        {
+            return ObservableExtensions.Subscribe(observable, onNext);
+        }
+
+        public static IDisposable Subscribe<T>(this IObservable<T> observable, Action<T> onNext, Action<Exception> onError, Action onCompleted)
+        {
+            return ObservableExtensions.Subscribe(observable, onNext, onError, onCompleted);
+        }
+
+    }
+
+}
+
 
 namespace WampSharp.Core.Listener
 {

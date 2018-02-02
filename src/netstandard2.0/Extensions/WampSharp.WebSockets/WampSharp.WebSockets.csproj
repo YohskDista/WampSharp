@@ -25,5 +25,11 @@
     <ProjectReference Include="..\..\WampSharp\WampSharp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Reactive.Async.Interfaces">
+      <HintPath>..\..\..\net45\packages\System.Reactive.Async.3.0.0\lib\netstandard2.0\System.Reactive.Async.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>

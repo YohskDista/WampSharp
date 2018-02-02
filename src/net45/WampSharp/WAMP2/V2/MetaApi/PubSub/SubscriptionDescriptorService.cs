@@ -10,6 +10,8 @@ using WampSharp.V2.Realm;
 
 namespace WampSharp.V2.MetaApi
 {
+    extern alias rxCore;
+
     internal class SubscriptionDescriptorService : 
         DescriptorServiceBase<SubscriptionDetailsExtended>,
         IWampSubscriptionDescriptor,
@@ -49,7 +51,7 @@ namespace WampSharp.V2.MetaApi
             IDisposable removeDisposable = 
                 removeObservable.Subscribe(x => OnSubscriptionRemoved(x.Topic, x.EventArgs));
 
-            mDisposable = new CompositeDisposable(addDisposable, removeDisposable);
+            mDisposable = new rxCore::System.Reactive.Disposables.CompositeDisposable(addDisposable, removeDisposable);
         }
 
         private static IObservable<WampSubscriptionAddEventArgs> GetSubscriptionAdded(IWampTopic topic, IObservable<IWampTopic> removed)
