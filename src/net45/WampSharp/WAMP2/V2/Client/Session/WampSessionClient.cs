@@ -111,13 +111,13 @@ namespace WampSharp.V2.Client
         {
             using (IDisposable proxy = mServerProxy as IDisposable)
             {
+                TrySetCloseEventArgs(SessionCloseType.Goodbye, details, reason);
+
                 if (!mGoodbyeSent)
                 {
                     mServerProxy.Goodbye(new GoodbyeDetails(), WampErrors.GoodbyeAndOut);
                 }
             }
-
-            TrySetCloseEventArgs(SessionCloseType.Goodbye, details, reason);
         }
 
         private void RaiseConnectionBroken()
