@@ -17,13 +17,13 @@ namespace SystemEx
             mDisposables = disposables;
         }
 
-        public Task DisposeAsync()
+        public ValueTask DisposeAsync()
         {
             List<Task> tasks = new List<Task>();
 
             foreach (IAsyncDisposable disposable in mDisposables)
             {
-                Task disposeTask = disposable.DisposeAsync();
+                Task disposeTask = disposable.DisposeAsync().AsTask();
                 tasks.Add(disposeTask);
             }
 
@@ -38,7 +38,7 @@ namespace SystemEx
             Task result = whenAll.ToTask();
 #endif
 
-            return result;
+            return new ValueTask(result);
         }
     }
 }

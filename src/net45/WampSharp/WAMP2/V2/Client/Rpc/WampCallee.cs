@@ -92,7 +92,7 @@ namespace WampSharp.V2.Client
                 mRegistrationId = registrationId;
             }
 
-            public Task DisposeAsync()
+            public ValueTask DisposeAsync()
             {
                 if (!mCallee.IsConnected)
                 {
@@ -103,7 +103,7 @@ namespace WampSharp.V2.Client
             }
         }
 
-        private Task Unregister(long registrationId)
+        private ValueTask Unregister(long registrationId)
         {
             UnregisterRequest unregisterRequest =
                 new UnregisterRequest(mFormatter, registrationId);
@@ -114,7 +114,7 @@ namespace WampSharp.V2.Client
 
             mProxy.Unregister(requestId, registrationId);
 
-            return unregisterRequest.Task;
+            return new ValueTask(unregisterRequest.Task);
         }
 
         public void Unregistered(long requestId)

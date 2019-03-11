@@ -78,7 +78,7 @@ namespace WampSharp.V2.MetaApi
             IAsyncDisposable asyncDisposable = registrationDisposable.Result;
 
             IDisposable unregisterDisposable =
-                Disposable.Create(() => asyncDisposable.DisposeAsync().Wait());
+                Disposable.Create(() => asyncDisposable.DisposeAsync().AsTask().Wait());
 
             CompositeDisposable result =
                 new CompositeDisposable(unregisterDisposable, service);

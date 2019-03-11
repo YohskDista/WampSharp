@@ -59,7 +59,7 @@ namespace WampSharp.V2.Client
             return request.Task;
         }
 
-        private Task Unsubscribe(Subscription subscription)
+        private ValueTask Unsubscribe(Subscription subscription)
         {
             TaskCompletionSource<bool> completionSource = new TaskCompletionSource<bool>();
             Task result = completionSource.Task;
@@ -89,7 +89,7 @@ namespace WampSharp.V2.Client
                 }
             }
 
-            return result;
+            return new ValueTask(result);
         }
 
         private Task UnsubscribeExternal(long subscriptionId)
@@ -365,7 +365,7 @@ namespace WampSharp.V2.Client
                 mSubscription = subscription;
             }
 
-            public Task DisposeAsync()
+            public ValueTask DisposeAsync()
             {
                 return mParent.Unsubscribe(mSubscription);
             }

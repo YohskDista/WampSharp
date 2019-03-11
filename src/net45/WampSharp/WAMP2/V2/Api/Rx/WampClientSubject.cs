@@ -98,16 +98,12 @@ namespace WampSharp.V2
                         (mDisposableTask.Exception == null))
                     {
                         IAsyncDisposable result = mDisposableTask.Result;
-                        result.DisposeAsync().ContinueWith(x =>
-                        {
-                            if (x.Exception != null)
-                            {
-                                // Done in order to avoid .NET 4.0 UnhandledException
-                                // Nobody sees this exception anyway. I hope that we
-                                // soon get a version of Reactive Extensions which is more
-                                // suited for remote pub/sub, and allows to return AsyncDispoables.
-                            }
-                        });
+                        result.DisposeAsync();
+                        // TODOIAsyncDisposable
+                        // Done in order to avoid .NET 4.0 UnhandledException
+                        // Nobody sees this exception anyway. I hope that we
+                        // soon get a version of Reactive Extensions which is more
+                        // suited for remote pub/sub, and allows to return AsyncDispoables.
                     }
                 }
             }
