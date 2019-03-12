@@ -1,5 +1,7 @@
 using System;
-using System.Threading.Tasks;
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
 
 // ReSharper disable once CheckNamespace
 namespace SystemEx

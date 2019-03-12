@@ -5,6 +5,10 @@ using SystemEx;
 using WampSharp.Core.Message;
 using WampSharp.Logging;
 
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
+
 namespace WampSharp.Core.Listener
 {
     public abstract class AsyncWampConnection<TMessage> : IWampConnection<TMessage>,

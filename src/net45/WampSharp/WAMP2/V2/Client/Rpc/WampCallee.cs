@@ -11,6 +11,9 @@ using WampSharp.V2.Core;
 using WampSharp.V2.Core.Contracts;
 using WampSharp.V2.Realm;
 using WampSharp.V2.Rpc;
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
 
 namespace WampSharp.V2.Client
 {
@@ -114,7 +117,7 @@ namespace WampSharp.V2.Client
 
             mProxy.Unregister(requestId, registrationId);
 
-            return new ValueTask(unregisterRequest.Task);
+            return unregisterRequest.Task.AsValueTask();
         }
 
         public void Unregistered(long requestId)

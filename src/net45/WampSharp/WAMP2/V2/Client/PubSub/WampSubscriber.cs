@@ -9,6 +9,9 @@ using WampSharp.V2.Core;
 using WampSharp.V2.Core.Contracts;
 using WampSharp.V2.PubSub;
 using WampSharp.V2.Realm;
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
 
 namespace WampSharp.V2.Client
 {
@@ -89,7 +92,7 @@ namespace WampSharp.V2.Client
                 }
             }
 
-            return new ValueTask(result);
+            return result.AsValueTask();
         }
 
         private Task UnsubscribeExternal(long subscriptionId)

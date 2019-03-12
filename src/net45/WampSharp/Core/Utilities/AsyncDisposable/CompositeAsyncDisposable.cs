@@ -4,6 +4,10 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Threading.Tasks;
+using WampSharp.Core.Utilities;
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
 
 // ReSharper disable once CheckNamespace
 namespace SystemEx
@@ -37,8 +41,7 @@ namespace SystemEx
 
             Task result = whenAll.ToTask();
 #endif
-
-            return new ValueTask(result);
+            return result.AsValueTask();
         }
     }
 }

@@ -9,6 +9,9 @@ using WampSharp.Tests.Wampv2.TestHelpers.Integration;
 using WampSharp.V2;
 using WampSharp.V2.Core.Contracts;
 using WampSharp.V2.Rpc;
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
 
 namespace WampSharp.Tests.Wampv2.Integration
 {

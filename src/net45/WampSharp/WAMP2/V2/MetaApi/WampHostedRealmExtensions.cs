@@ -2,6 +2,7 @@
 using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using SystemEx;
+using WampSharp.Core.Utilities;
 using WampSharp.V2.Core.Contracts;
 using WampSharp.V2.Realm;
 using WampSharp.V2.Testament;

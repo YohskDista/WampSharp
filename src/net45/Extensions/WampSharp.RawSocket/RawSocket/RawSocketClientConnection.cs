@@ -10,6 +10,9 @@ using WampSharp.Core.Message;
 using WampSharp.V2.Binding;
 using WampSharp.V2.Binding.Contracts;
 using WampSharp.V2.Binding.Parsers;
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
 
 namespace WampSharp.RawSocket
 {

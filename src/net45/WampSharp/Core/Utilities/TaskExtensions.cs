@@ -2,6 +2,10 @@
 using System.Reflection;
 using System.Threading.Tasks;
 
+#if !VALUETASK
+using ValueTask = System.Threading.Tasks.Task;
+#endif
+
 namespace WampSharp.Core.Utilities
 {
     internal static class TaskExtensions
@@ -165,5 +169,21 @@ namespace WampSharp.Core.Utilities
 
             return taskResult.Task;
         }
+
+        public static ValueTask AsValueTask(this Task task)
+        {
+#if VALUETASK
+            return new ValueTask(task);
+#else
+            return task;
+#endif
+        }
+
+#if !VALUETASK
+        public static Task AsTask(this ValueTask task)
+        {
+            return task;
+        }
+#endif
     }
 }
